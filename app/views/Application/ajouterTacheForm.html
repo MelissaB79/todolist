@@ -3,4 +3,18 @@
 
 <h1>Ajouter une nouvelle tâche</h1>
 
-*{ A COMPLETER }*
+<!--form>
+    <label for="title">Titre :</label><br>
+    <input type="text" id="title" name="title"><br>
+</form-->
+
+#{form @Application.ajouterTache()}
+<div>
+    Title: <input type="text" name="tache.title" />
+</div>
+<div>
+    <input type="submit" value="Say hello" />
+</div>
+#{/form}
+
+<!--p><a href="@{Application.ajouterTache()}">Valider</a></p-->

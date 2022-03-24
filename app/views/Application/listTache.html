@@ -5,13 +5,19 @@
 
 #{if taches}
 <ul>
-    *{ A COMPLETER }*
-	<li id="*{ A COMPLETER }*">
-	    <input type="checkbox">
-	    <span class="title">*{ A COMPLETER }*</span>
-	    <a href="#" class="edit"><img src="@{'/public/images/edit.png'}" alt="modifier la tache" width="10" height="10"></a>
-	    <a href="#" class="del"><img src="@{'/public/images/delete.png'}" alt="supprimer la tache" width="10" height="10"></a>
+	#{list items:taches, as:'tache'}
+	<li id="${ tache.id }">
+		#{if tache.isValidate}
+	    	<input type="checkbox" checked>
+		#{/if}
+		#{else}
+			<input type="checkbox">
+		#{/else}
+	    <span class="title">${ tache.title }</span>
+	    <a href="@{Application.editTache(tache.id, tache.title)}" class="edit"><img src="@{'/public/images/edit.png'}" alt="modifier la tache" width="10" height="10"></a>
+	    <a href="@{Application.supprimerTache(tache.id)}" class="del"><img src="@{'/public/images/delete.png'}" alt="supprimer la tache" width="10" height="10"></a>
 	</li>
+	#{/list}
 </ul>
 #{/if}
 #{else}
@@ -59,9 +65,9 @@
             // A COMPLETER
             // ...
             $.ajax({
-                url: '',
-                type: '',
-                data: {},
+                url: '@{Application.supprimerTache()}',
+                type: 'DELETE',
+                data: {id: $(this).parent().attr('id')},
                 success: function(result) {
                     $('#' + result.id).remove();
                 }
@@ -82,9 +88,9 @@
         	// A COMPLETER
         	// ...
             $.ajax({
-                url: '',
-                type: '',
-                data: {},
+                url: '@{Application.editTache()}',
+                type: 'PUT',
+                data: {id: $(this).parent().attr('id'), title: $(this).parent().attr('title')},
                 success: function(result) {
                     $('#' + result.id + ' span').text(result.title);
                 }
