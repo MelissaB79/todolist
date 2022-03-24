@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Tache extends Model {
     @Id
     @GeneratedValue
-    public long id;
+    public transient long id;
     public String title;
     public boolean isValidate;
 
