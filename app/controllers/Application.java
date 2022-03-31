@@ -42,8 +42,9 @@ public class Application extends Controller {
 
     // Change le statut d'une tâche en base de données
     public static void validerTache(Long id) {
-    	// A COMPLETER
-        // ...
+        Tache tache = Tache.findById(id);
+        tache.isValidate = !tache.isValidate;
+        tache.save();
     }
 
     // Supprime une tâche en base de données
@@ -51,11 +52,15 @@ public class Application extends Controller {
         Tache tache = Tache.findById(id);
         tache.delete();
         listTache();
+        //render();
     }
 
     // Modifie une tâche en base de données
     public static void editTache(Long id, String title) {
-        System.out.println(title);
+        Tache tache = Tache.findById(id);
+        System.out.println(id+ " "+title);
+        tache.title = title;
+        tache.save();
     }
 
 }

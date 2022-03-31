@@ -6,11 +6,11 @@
 #   ...
 
 Tache(t1):
-    title: tester Play! 1
+    title: Faire les courses
     isValidate: false
 Tache(t2):
-    title: tester Play! Framework
-    isValidate: true
+    title: Faire la vaisselle
+    isValidate: false
 Tache(t3):
-    title: tester Play! 2
-    isValidate: true
+    title: Aller promener le chien
+    isValidate: false

@@ -8,7 +8,7 @@
 	#{list items:taches, as:'tache'}
 	<li id="${ tache.id }">
 		#{if tache.isValidate}
-	    	<input type="checkbox" checked>
+	    	<input type="checkbox" checked >
 		#{/if}
 		#{else}
 			<input type="checkbox">
@@ -47,7 +47,7 @@
         $.ajax({
             url: '@{Application.validerTache()}',
             type: 'POST',  
-            data: {id: $(this).attr('id')}
+            data: {id: $(this).parent().attr('id')}
         });
     });
 
